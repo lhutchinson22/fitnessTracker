@@ -1,23 +1,31 @@
 const express = require("express");
-const mongojs = require("mongojs");
 const logger = require("morgan");
+const mongoose = require("mongoose");
 
-const databaseUrl = "warmup";
-const collections = ["books"];
-const db = mongojs(databaseUrl, collections);
+const PORT = process.env.PORT || 3000;
 
+const User = require("./userModel.js");
 const app = express();
 
 app.use(logger("dev"));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(express.static("public"));
 
-db.on("error", error => {
-  console.log("Database Error:", error);
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true, useCreateIndex: true });
 
-app.listen(3000, () => {
-    console.log("App running on port 3000!");
-  });
-  
+// app.post("/submit", ({ body }, res) => {
+//   User.create(body)
+//     .then(dbUser => {
+//       res.json(dbUser);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
+});
