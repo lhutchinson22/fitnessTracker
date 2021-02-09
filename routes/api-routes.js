@@ -4,7 +4,14 @@ module.exports = (app) => {
     
     // find all workouts and display in descending order
     app.get("/api/workouts", (req, res) => {
-        Workout.find({})
+        Workout.aggregate( [
+            {
+                $addFields: {
+                    totalDuration: {$sum: "$exercises.duration" },
+                    totalDistance: {$sum: "$exercises.distance"}
+                }
+            }
+        ])
           .sort({ date: -1 })
           .then(dbWorkout => {
             res.json(dbWorkout);
