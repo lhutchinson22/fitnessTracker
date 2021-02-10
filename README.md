@@ -7,7 +7,7 @@
 
 <h2>Images</h2>
 
-<img src="fitnesstracker.gif">
+<img src="fitnesstracker2.gif">
 
 <p>Deployed link:</p>
 <p>https://blooming-cliffs-39460.herokuapp.com/</p>
