@@ -7,10 +7,10 @@
 
 <h2>Images</h2>
 
-<img src="">
+<img src="fitnesstracker.gif">
 
 <p>Deployed link:</p>
-<p></p>
+<p>https://blooming-cliffs-39460.herokuapp.com/</p>
 
 <h2>Questions</h2>
 <p>Github username: lhutchinson22</p>
